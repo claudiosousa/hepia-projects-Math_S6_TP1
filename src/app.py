@@ -3,13 +3,14 @@ from math import *
 from M_gen import M_gen
 from solve_brut_force import solve_brut_force
 from solve_constant import solve_constant
+from solve_heuristique import solve_heuristique
 import matplotlib.pyplot as plt
 
 k_values = [0.2, 0.5, 0.8]
 n_values = range(2, 23)
 measures = 10
 
-solvers = [solve_brut_force, solve_constant]
+solvers = [solve_brut_force, solve_constant, solve_heuristique]
 
 complexity_p = []
 error_p = []

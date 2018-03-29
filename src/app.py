@@ -6,8 +6,8 @@ from solve_constant import solve_constant
 from solve_heuristique import solve_heuristique
 import matplotlib.pyplot as plt
 
-k_values = [0.2, 0.5, 0.8]
-n_values = range(2, 23)
+k_values = [0, 0.5, 1]
+n_values = range(2, 7)
 measures = 10
 
 solvers = [solve_brut_force, solve_constant, solve_heuristique]
@@ -28,7 +28,7 @@ for n in n_values:
                 if not k_min:
                     k_min = k
                 else:
-                    err[isolver - 1] += abs(k - k_min) / k_min / measures
+                    err[isolver - 1] += abs(k) / k_min / measures
                 C[isolver] += c / measures
 
         error_p[-1] += err
@@ -38,7 +38,7 @@ for n in n_values:
 plt.subplot(211)
 plt.title("Compléxité en fonction de n,k")
 plt.semilogy(n_values, complexity_p)
-plt.legend([f'$n^k, d={k}$' for k in k_values])
+plt.legend(sum([(f'$n^k, d={k}$', f'$sqrt(|E|), d={k}$', f'$n^2, d={k}$') for k in k_values],()))
 plt.grid(True)
 plt.xlabel("n")
 plt.ylabel("Complexité")
@@ -46,7 +46,7 @@ plt.ylabel("Complexité")
 plt.subplot(212)
 plt.title("Erreur en fonction de n,k")
 plt.plot(n_values, error_p)
-plt.legend([f'$n^k, d={k}$' for k in k_values])
+plt.legend(sum([(f'$sqrt(|E|), d={k}$', f'$n^2, d={k}$') for k in k_values],()))
 plt.grid(True)
 plt.xlabel("n")
 plt.ylabel("Error %")

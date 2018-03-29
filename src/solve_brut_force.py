@@ -3,6 +3,7 @@ from itertools import combinations
 def solve_brut_force(m):
     n = len(m)
     tests = 0
+    clique_found = None
     for k in range(2, n):
         clique_found = False
         for v_set in combinations(range(n), k):
@@ -14,4 +15,6 @@ def solve_brut_force(m):
                 clique_found = True
         if not clique_found:
             return k - 1, tests
+    if clique_found is None:
+        return 1, 0
     return n, tests

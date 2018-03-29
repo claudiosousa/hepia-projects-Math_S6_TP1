@@ -1,6 +1,6 @@
 from math import *
 
 def solve_constant(m):
-    E = sum(sum(l) for l in m) / 2
     n = len(m)
-    return 1 + ceil(sqrt(E)), n**2
+    E = sum(sum(l) for l in m)-n
+    return ceil(sqrt(E)), n**2

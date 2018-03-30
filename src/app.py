@@ -49,6 +49,6 @@ plt.plot(n_values, error_p)
 plt.legend(sum([(f'$sqrt(|E|), d={k}$', f'$n^2, d={k}$') for k in k_values],()))
 plt.grid(True)
 plt.xlabel("n")
-plt.ylabel("Error %")
+plt.ylabel("Error ratio")
 
 plt.show()

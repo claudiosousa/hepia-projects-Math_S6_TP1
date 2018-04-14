@@ -5,6 +5,8 @@ from solve_brut_force import solve_brut_force
 from solve_constant import solve_constant
 from solve_heuristique import solve_heuristique
 import matplotlib.pyplot as plt
+import matplotlib as mpl
+from cycler import cycler
 
 k_values = [0, 0.5, 1]
 n_values = range(2, 7)
@@ -35,18 +37,20 @@ for n in n_values:
         complexity_p[-1] += C
 
 
+mpl.rcParams['axes.prop_cycle'] = cycler(color=['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf'])
 plt.subplot(211)
 plt.title("Compléxité en fonction de n,k")
 plt.semilogy(n_values, complexity_p)
-plt.legend(sum([(f'$n^k, d={k}$', f'$sqrt(|E|), d={k}$', f'$n^2, d={k}$') for k in k_values],()))
+plt.legend(sum([(f'$n^k, d={k}$', f'$sqrt(|E|), d={k}$', f'$n^2, d={k}$') for k in k_values],()), loc='upper left', ncol=3)
 plt.grid(True)
 plt.xlabel("n")
 plt.ylabel("Complexité")
 
+mpl.rcParams['axes.prop_cycle'] = cycler(color=['#ff7f0e', '#2ca02c', '#9467bd', '#8c564b', '#7f7f7f', '#bcbd22', '#17becf'])
 plt.subplot(212)
 plt.title("Erreur en fonction de n,k")
 plt.plot(n_values, error_p)
-plt.legend(sum([(f'$sqrt(|E|), d={k}$', f'$n^2, d={k}$') for k in k_values],()))
+plt.legend(sum([(f'$sqrt(|E|), d={k}$', f'$n^2, d={k}$') for k in k_values],()), loc='upper left', ncol=3)
 plt.grid(True)
 plt.xlabel("n")
 plt.ylabel("Error ratio")
